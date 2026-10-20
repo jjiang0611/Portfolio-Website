@@ -1,0 +1,143 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>NYC Congestion Pricing Analysis | J. Jiang</title>
+  <meta name="description" content="Case study: combining five MTA and NYC DOT datasets to see how traffic and transit shifted around NYC's January 2025 congestion-pricing launch.">
+  <link rel="canonical" href="https://jjiang0611.github.io/Portfolio-Website/projects/congestion-pricing.html">
+
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="NYC Congestion Pricing: What Changed on the Roads?">
+  <meta property="og:description" content="Combined five MTA and NYC DOT datasets to see how traffic and transit shifted around NYC's January 2025 congestion-pricing launch.">
+  <meta property="og:url" content="https://jjiang0611.github.io/Portfolio-Website/projects/congestion-pricing.html">
+  <meta property="og:image" content="https://jjiang0611.github.io/Portfolio-Website/assets/img/lincoln-tunnel-west-north-tube.png">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <link rel="icon" href="../assets/img/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/css/style.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="nav" id="top">
+    <div class="container">
+      <a class="brand" href="../index.html">J. Jiang<span>.</span></a>
+      <button class="nav-toggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="nav-links">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+      </button>
+      <nav aria-label="Primary">
+        <ul class="nav-links" id="nav-links">
+          <li><a href="../index.html#about">About</a></li>
+          <li><a href="../index.html#skills">Skills</a></li>
+          <li><a href="../index.html#projects" aria-current="true">Projects</a></li>
+          <li><a href="../index.html#experience">Experience</a></li>
+          <li><a href="../index.html#education">Education</a></li>
+          <li><a href="../index.html#contact">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <header class="cs-header">
+      <div class="container">
+        <a class="back-link" href="../index.html#projects">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5M11 6l-6 6 6 6"/></svg>
+          All projects
+        </a>
+        <p class="cs-meta">Team project · AMS 561, Stony Brook</p>
+        <h1>NYC Congestion Pricing: What Changed on the Roads?</h1>
+        <p class="cs-summary">Combined five MTA and NYC DOT datasets to see how traffic and transit shifted around NYC's January 2025 congestion-pricing launch. Built speed trends for each road and an interactive day-by-day speed map.</p>
+        <ul class="tags" aria-label="Tools">
+          <li class="tag">Python</li>
+          <li class="tag">Pandas</li>
+          <li class="tag">Matplotlib</li>
+          <li class="tag">Folium</li>
+        </ul>
+        <div class="btn-group">
+          <a class="btn btn-primary" href="https://github.com/jjiang0611/AMS-561-Project" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-3.16 19.49c.5.09.68-.22.68-.48v-1.7c-2.78.6-3.37-1.34-3.37-1.34-.45-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.9 1.52 2.34 1.08 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.94 0-1.09.39-1.98 1.03-2.68-.1-.25-.45-1.27.1-2.64 0 0 .84-.27 2.75 1.02a9.56 9.56 0 0 1 5 0c1.91-1.29 2.75-1.02 2.75-1.02.55 1.37.2 2.39.1 2.64.64.7 1.03 1.59 1.03 2.68 0 3.84-2.34 4.69-4.57 4.93.36.31.68.92.68 1.85v2.75c0 .27.18.58.69.48A10 10 0 0 0 12 2z"/></svg>
+            View notebook on GitHub
+          </a>
+        </div>
+      </div>
+    </header>
+
+    <article class="cs-body">
+      <div class="container">
+        <section class="cs-section" aria-labelledby="q">
+          <h2 id="q">The question</h2>
+          <p>On Jan 5, 2025, NYC began charging most vehicles that enter Manhattan below 60th St. With a partner, I measured how road speeds, crossing volumes, and subway ridership changed around the launch.</p>
+        </section>
+
+        <section class="cs-section" aria-labelledby="data">
+          <h2 id="data">The data (Mar 2024 – May 2025)</h2>
+          <ul>
+            <li>MTA congestion-zone entries by detection point</li>
+            <li>MTA bridge &amp; tunnel crossings (E-ZPass + tolls by mail)</li>
+            <li>MTA subway ridership: daily (2024), by station (2025)</li>
+            <li>NYC DOT real-time traffic speeds by road segment</li>
+          </ul>
+        </section>
+
+        <section class="cs-section" aria-labelledby="approach">
+          <h2 id="approach">Approach</h2>
+          <ul>
+            <li>Cleaned and aggregated with pandas: daily totals and averages by crossing, station, and road segment.</li>
+            <li>Mapped MTA plaza codes to bridge/tunnel names; used regex to pull subway lines from station names.</li>
+            <li>Parsed raw coordinate strings into road geometry and built a GeoJSON time series.</li>
+            <li>Plotted speed trends per segment and built an interactive folium map with a day-by-day time slider, colored red → green by average speed.</li>
+          </ul>
+        </section>
+
+        <section class="cs-section" aria-labelledby="found">
+          <h2 id="found">What we found</h2>
+          <ul>
+            <li>Lincoln Tunnel speeds rose after pricing began. The westbound north tube went from mostly mid-20s mph to the low 30s.</li>
+            <li>Not every drop was traffic: we concluded a broken tunnel sensor caused the stretch with no readings in the Lincoln Tunnel west center tube (summer 2024). The data also showed BQE segments falling to 0 mph in April 2025 and an MDE/RFK segment reading 0 the whole period, signs of sensor problems rather than real stoppages.</li>
+          </ul>
+
+          <figure class="figure">
+            <img src="../assets/img/lincoln-tunnel-west-north-tube.png" alt="Line chart of average daily speed in the Lincoln Tunnel westbound north tube from March 2024 to May 2025. Speeds sit mostly in the mid-20s mph through 2024 and move into the low 30s after January 2025." width="790" height="390">
+            <figcaption>Average daily speed (mph), Lincoln Tunnel westbound north tube (NY → NJ). Speeds step up after congestion pricing began in January 2025. Source: NYC DOT traffic speeds.</figcaption>
+          </figure>
+
+          <figure class="figure">
+            <img src="../assets/img/lincoln-tunnel-west-center-tube.png" alt="Line chart of average daily speed in the Lincoln Tunnel westbound center tube, March 2024 to May 2025, with a stretch of near-zero readings in summer 2024." width="790" height="390" loading="lazy">
+            <figcaption>Lincoln Tunnel westbound center tube. The stretch of zero readings in summer 2024 is the broken sensor, not stopped traffic.</figcaption>
+          </figure>
+
+          <figure class="figure">
+            <img src="../assets/img/bqe-atlantic-ave.png" alt="Line chart of average daily speed on the BQE northbound from Atlantic Ave to the Brooklyn Bridge, with readings dropping to zero in April 2025." width="790" height="390" loading="lazy">
+            <figcaption>BQE northbound, Atlantic Ave to Brooklyn Bridge (Manhattan side). Readings fall to 0 mph in April 2025, another sign of a sensor problem rather than a real stoppage.</figcaption>
+          </figure>
+        </section>
+
+        <nav class="cs-next" aria-label="More projects">
+          <a class="back-link" href="../index.html#projects">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5M11 6l-6 6 6 6"/></svg>
+            All projects
+          </a>
+          <a class="back-link" href="pos-system.html">
+            Next: Point-of-Sale System
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </a>
+        </nav>
+      </div>
+    </article>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <span>© <span data-year>2026</span> J. Jiang</span>
+      <a href="mailto:jjiang0611@gmail.com">jjiang0611@gmail.com</a>
+    </div>
+  </footer>
+
+  <script src="../assets/js/main.js"></script>
+</body>
+</html>

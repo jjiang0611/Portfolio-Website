@@ -1,0 +1,125 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Point-of-Sale System Case Study | J. Jiang</title>
+  <meta name="description" content="Case study: a touchscreen checkout system a real store uses today, logging every sale as structured data and producing sales reports, PDF reports, and monthly backups.">
+  <link rel="canonical" href="https://jjiang0611.github.io/Portfolio-Website/projects/pos-system.html">
+
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Point-of-Sale System for a Working Store">
+  <meta property="og:description" content="A touchscreen checkout system a real store uses today. It logs every sale as structured data and produces daily, weekly, and monthly sales reports.">
+  <meta property="og:url" content="https://jjiang0611.github.io/Portfolio-Website/projects/pos-system.html">
+  <meta property="og:image" content="https://jjiang0611.github.io/Portfolio-Website/assets/img/og-image.png">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <link rel="icon" href="../assets/img/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/css/style.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="nav" id="top">
+    <div class="container">
+      <a class="brand" href="../index.html">J. Jiang<span>.</span></a>
+      <button class="nav-toggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="nav-links">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+      </button>
+      <nav aria-label="Primary">
+        <ul class="nav-links" id="nav-links">
+          <li><a href="../index.html#about">About</a></li>
+          <li><a href="../index.html#skills">Skills</a></li>
+          <li><a href="../index.html#projects" aria-current="true">Projects</a></li>
+          <li><a href="../index.html#experience">Experience</a></li>
+          <li><a href="../index.html#education">Education</a></li>
+          <li><a href="../index.html#contact">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <header class="cs-header">
+      <div class="container">
+        <a class="back-link" href="../index.html#projects">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5M11 6l-6 6 6 6"/></svg>
+          All projects
+        </a>
+        <p class="cs-meta">In production use · Side project</p>
+        <h1>Point-of-Sale System for a Working Store</h1>
+        <p class="cs-summary">Built a touchscreen checkout system that a real store uses today. It logs every sale as structured data and produces daily, weekly, and monthly sales reports, plus automatic monthly PDF reports and backups.</p>
+        <ul class="tags" aria-label="Tools">
+          <li class="tag">Python</li>
+          <li class="tag">Tkinter</li>
+          <li class="tag">JSON</li>
+          <li class="tag">ReportLab</li>
+          <li class="tag">Serial</li>
+          <li class="tag">ESC/POS</li>
+        </ul>
+      </div>
+    </header>
+
+    <article class="cs-body">
+      <div class="container">
+        <section class="cs-section" aria-labelledby="problem">
+          <h2 id="problem">The problem</h2>
+          <p>A store needed a simple checkout that worked with hardware it already had (a customer pole display, an Epson receipt printer, and a touchscreen laptop) and no barcode scanner.</p>
+        </section>
+
+        <section class="cs-section" aria-labelledby="built">
+          <h2 id="built">What I built</h2>
+          <ul>
+            <li>A touchscreen keypad interface (Tkinter) with automatic decimal entry (type 2-4-9 → $2.49) for faster checkout.</li>
+            <li>Live totals on the customer display over a serial connection; receipts printed via ESC/POS.</li>
+            <li>Every sale saved as a structured record: transaction ID, timestamp, line items (name, price, qty), total.</li>
+          </ul>
+
+          <figure class="figure">
+            <img src="../assets/img/pos-data-flow.svg" alt="Diagram: the touchscreen checkout sends totals to the customer display and receipts to the printer, and saves each sale as a JSON record (id, datetime, products, total_amount). Records are validated on load and feed sales reports, one-click PDF financial reports, and an automatic monthly backup." width="800" height="450">
+            <figcaption>How data moves through the system: every sale becomes a structured record that feeds the reports.</figcaption>
+          </figure>
+        </section>
+
+        <section class="cs-section" aria-labelledby="data-side">
+          <h2 id="data-side">The data side</h2>
+          <ul>
+            <li>Built-in reporting: all-time, today, this week, this month, and a month-by-month breakdown.</li>
+            <li>One-click PDF financial reports (ReportLab).</li>
+            <li>On the 1st of each month it automatically backs up the transaction log and generates a fresh report, at most once per month.</li>
+            <li>Validation that keeps reports trustworthy: malformed or hand-edited records are repaired on load, missing totals are rebuilt from line items, and sales with no usable date are counted separately instead of being silently dropped.</li>
+          </ul>
+        </section>
+
+        <section class="cs-section" aria-labelledby="why">
+          <h2 id="why">Why it matters</h2>
+          <p>Reports are only as good as the data behind them. This project taught me to build for data quality at the point where data is captured.</p>
+        </section>
+
+        <nav class="cs-next" aria-label="More projects">
+          <a class="back-link" href="congestion-pricing.html">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5M11 6l-6 6 6 6"/></svg>
+            Previous: NYC Congestion Pricing
+          </a>
+          <a class="back-link" href="../index.html#projects">
+            All projects
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </a>
+        </nav>
+      </div>
+    </article>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <span>© <span data-year>2026</span> J. Jiang</span>
+      <a href="mailto:jjiang0611@gmail.com">jjiang0611@gmail.com</a>
+    </div>
+  </footer>
+
+  <script src="../assets/js/main.js"></script>
+</body>
+</html>
