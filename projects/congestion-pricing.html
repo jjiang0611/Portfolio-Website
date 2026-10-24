@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>NYC Congestion Pricing Analysis | J. Jiang</title>
+  <title>NYC Congestion Pricing Analysis | Jacky Jiang</title>
   <meta name="description" content="Case study: combining five MTA and NYC DOT datasets to see how traffic and transit shifted around NYC's January 2025 congestion-pricing launch.">
   <link rel="canonical" href="https://jjiang0611.github.io/Portfolio-Website/projects/congestion-pricing.html">
 
@@ -25,7 +25,7 @@
 
   <header class="nav">
     <div class="container">
-      <a class="brand" href="../index.html">J. Jiang<span>.</span></a>
+      <a class="brand" href="../index.html">Jacky Jiang<span>.</span></a>
       <button class="nav-toggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="nav-links">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
       </button>
@@ -51,7 +51,7 @@
         </a>
         <p class="cs-meta">Team project · AMS 561, Stony Brook</p>
         <h1>NYC Congestion Pricing: What Changed on the Roads?</h1>
-        <p class="cs-summary">Combined five MTA and NYC DOT datasets to see how traffic and transit shifted around NYC's January 2025 congestion-pricing launch. Built speed trends for each road and an interactive day-by-day speed map.</p>
+        <p class="cs-summary">Combined five MTA and NYC DOT datasets to see how traffic and transit shifted around NYC's January 2025 congestion-pricing launch. Built daily speed trends for 9 bridge-approach road segments and an interactive day-by-day speed map.</p>
         <ul class="tags" aria-label="Tools">
           <li class="tag">Python</li>
           <li class="tag">Pandas</li>
@@ -87,7 +87,7 @@
         <section class="cs-section" aria-labelledby="approach">
           <h2 id="approach">Approach</h2>
           <ul>
-            <li>Cleaned and aggregated with pandas: daily totals and averages by crossing, station, and road segment.</li>
+            <li>Cleaned and aggregated with pandas: daily totals and averages by crossing, station, and road segment, including daily average speeds for 9 bridge-approach road segments.</li>
             <li>Mapped MTA plaza codes to bridge/tunnel names; used regex to pull subway lines from station names.</li>
             <li>Parsed raw coordinate strings into road geometry and built a GeoJSON time series.</li>
             <li>Plotted speed trends per segment and built an interactive folium map with a day-by-day time slider, colored red → green by average speed.</li>
@@ -99,6 +99,7 @@
           <ul>
             <li>Lincoln Tunnel speeds rose after pricing began. The westbound north tube went from mostly mid-20s mph to the low 30s.</li>
             <li>Not every drop was traffic: we concluded a broken tunnel sensor caused the stretch with no readings in the Lincoln Tunnel west center tube (summer 2024). The data also showed BQE segments falling to 0 mph in April 2025 and an MDE/RFK segment reading 0 the whole period, signs of sensor problems rather than real stoppages.</li>
+            <li>We presented our findings with policy recommendations for urban transportation planning.</li>
           </ul>
 
           <figure class="figure">
@@ -133,7 +134,7 @@
 
   <footer class="footer">
     <div class="container">
-      <span>© <span data-year>2026</span> J. Jiang</span>
+      <span>© <span data-year>2026</span> Jacky Jiang</span>
       <a href="mailto:jjiang0611@gmail.com">jjiang0611@gmail.com</a>
     </div>
   </footer>

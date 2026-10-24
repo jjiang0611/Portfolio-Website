@@ -601,6 +601,21 @@ p {
   font-weight: 700;
 }
 
+.entry-head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 2px 16px;
+}
+
+.entry-date {
+  color: var(--muted);
+  font-size: 15px;
+  font-weight: 500;
+  white-space: nowrap;
+}
+
 .entry .org {
   margin: 4px 0 0;
   color: var(--muted);
@@ -617,10 +632,13 @@ p {
   margin-top: 8px;
 }
 
-.edu-grid {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 20px;
+.entry .tags {
+  margin-top: 14px;
+  padding-left: 0;
+}
+
+.entry .tags li + li {
+  margin-top: 0;
 }
 
 /* --- Contact ------------------------------------------------------------- */
@@ -861,7 +879,6 @@ p {
   }
 
   .projects-grid,
-  .edu-grid,
   .skills-grid {
     grid-template-columns: 1fr;
   }
@@ -885,6 +902,11 @@ p {
   .entry-icon {
     width: 44px;
     height: 44px;
+  }
+
+  .entry-head {
+    flex-direction: column;
+    gap: 2px;
   }
 
   .skill-card,
