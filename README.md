@@ -1,4 +1,4 @@
-# J. Jiang — Data Analyst Portfolio
+# Jacky Jiang — Data Analyst Portfolio
 
 Personal portfolio site: skills, projects, experience, and education, written for recruiters and hiring managers.
 
@@ -15,10 +15,11 @@ assets/js/main.js              Mobile menu, active nav link, resume-button check
 assets/img/                    Charts, diagram, favicon, link-preview image
 ```
 
-## Adding your resume
+## Updating your resume
 
-Save your resume as **`assets/resume.pdf`** and commit it. The "Download resume" buttons
-stay hidden until that file exists, so visitors never see a broken link.
+The "Download resume" buttons serve **`assets/resume.pdf`**. To update it, replace that file
+and commit. (If the file is ever missing, the buttons hide themselves instead of showing a
+broken link.) The public copy leaves out the phone number.
 
 ## Publishing on GitHub Pages
 
